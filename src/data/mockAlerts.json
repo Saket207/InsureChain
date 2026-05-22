@@ -1,0 +1,104 @@
+[
+  {
+    "id": "ALT-001",
+    "type": "early_warning",
+    "title": "Drought Risk Rising",
+    "message": "Drought risk rising in Nagpur district — ML confidence 67%. Monitor closely.",
+    "district": "Nagpur",
+    "timestamp": "2026-05-12T08:30:00Z",
+    "read": false,
+    "policyId": "INS-001"
+  },
+  {
+    "id": "ALT-002",
+    "type": "trigger_fired",
+    "title": "Drought Trigger Fired",
+    "message": "Drought conditions confirmed in Yavatmal. Rainfall below 40% of normal for 21 consecutive days. Payout of ₹8,000 initiated.",
+    "district": "Yavatmal",
+    "timestamp": "2026-05-10T14:15:00Z",
+    "read": false,
+    "policyId": "INS-002"
+  },
+  {
+    "id": "ALT-003",
+    "type": "payout_confirmed",
+    "title": "Payout Confirmed",
+    "message": "Payout of ₹8,000 confirmed to wallet 0x7b2e...9f1a. Transaction successful.",
+    "district": "Yavatmal",
+    "timestamp": "2026-05-10T14:22:00Z",
+    "read": true,
+    "policyId": "INS-002",
+    "txHash": "0x9c4f8b2d1e3a7f6c5d4e3b2a1f9c8d7e6b5a4c3d2e1f0a9b8c7d6e5f4a3b2c1d"
+  },
+  {
+    "id": "ALT-004",
+    "type": "early_warning",
+    "title": "Heatwave Risk Moderate",
+    "message": "Temperature trending above 40°C in Amravati region. Heatwave trigger watch activated.",
+    "district": "Amravati",
+    "timestamp": "2026-05-09T10:00:00Z",
+    "read": true,
+    "policyId": "INS-003"
+  },
+  {
+    "id": "ALT-005",
+    "type": "policy_expiry",
+    "title": "Policy Expiring Soon",
+    "message": "Your Rabi season policy INS-003 in Amravati expires on March 31, 2026. Consider renewing.",
+    "district": "Amravati",
+    "timestamp": "2026-03-24T09:00:00Z",
+    "read": true,
+    "policyId": "INS-003"
+  },
+  {
+    "id": "ALT-006",
+    "type": "early_warning",
+    "title": "Flood Risk Watch",
+    "message": "Heavy rainfall predicted in Chandrapur over the next 72 hours. Flood trigger confidence at 45%.",
+    "district": "Chandrapur",
+    "timestamp": "2026-05-08T16:30:00Z",
+    "read": true,
+    "policyId": null
+  },
+  {
+    "id": "ALT-007",
+    "type": "trigger_fired",
+    "title": "Heatwave Trigger Fired",
+    "message": "Temperature exceeded 42°C for 5 consecutive days in Akola. Heatwave trigger activated for policy INS-005.",
+    "district": "Akola",
+    "timestamp": "2026-05-07T12:00:00Z",
+    "read": true,
+    "policyId": "INS-005"
+  },
+  {
+    "id": "ALT-008",
+    "type": "payout_confirmed",
+    "title": "Payout Processed",
+    "message": "Payout of ₹15,000 confirmed to wallet 0x8e3d...1a4f for heatwave trigger. Block confirmed.",
+    "district": "Akola",
+    "timestamp": "2026-05-07T12:15:00Z",
+    "read": true,
+    "policyId": "INS-005",
+    "txHash": "0x2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b"
+  },
+  {
+    "id": "ALT-009",
+    "type": "early_warning",
+    "title": "Frost Advisory",
+    "message": "Night temperatures dropping below 5°C in Wardha district. Frost risk increasing for Rabi crops.",
+    "district": "Wardha",
+    "timestamp": "2026-01-15T06:00:00Z",
+    "read": true,
+    "policyId": "INS-004"
+  },
+  {
+    "id": "ALT-010",
+    "type": "policy_expiry",
+    "title": "Policy Renewal Reminder",
+    "message": "Policy INS-001 for Kharif season in Nagpur is expiring on October 31, 2026. Renew to maintain coverage.",
+    "district": "Nagpur",
+    "timestamp": "2026-10-24T09:00:00Z",
+    "read": false,
+    "policyId": "INS-001"
+  }
+]

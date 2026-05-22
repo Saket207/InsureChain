@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  --color-primary: #10b981; /* Emerald Green */
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
+  
+  --color-accent: #3b82f6; /* Blue accent for variety */
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* Explicit Text Colors */
+  --color-text-header: #0f172a;
+  --color-text-body: #334155;
+  --color-text-muted: #64748b;
+  
+  /* Layout Colors */
+  --color-bg-app: #f8fafc;
+  --color-sidebar: #0f172a;
+  --color-card: #ffffff;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-app);
+    color: var(--color-text-body);
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+    @apply text-text-header font-bold;
+  }
+}
+
+@layer utilities {
+  .premium-card {
+    @apply bg-white rounded-3xl border border-slate-200/60 shadow-sm transition-all duration-300 relative overflow-hidden;
+  }
+
+  .premium-card:hover {
+    @apply shadow-xl shadow-emerald-500/5 -translate-y-1 border-emerald-100;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply bg-primary text-white shadow-lg shadow-emerald-500/40;
+  }
+
+  .sidebar-link-inactive {
+    @apply text-slate-400 hover:text-white hover:bg-white/5;
+  }
+
+  .stat-icon-box {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner bg-emerald-50;
+  }
+
+  /* Professional "Internet/Network" Patterns */
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  }
+
+  .pulse-emerald {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    animation: pulse-emerald 2s infinite;
+  }
+
+  @keyframes pulse-emerald {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  /* Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+}

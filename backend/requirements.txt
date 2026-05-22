@@ -1,0 +1,37 @@
+# ── InsureChain Backend — Phase 4 Dependencies ──
+
+# Web Framework
+flask==3.1.1
+flask-cors==5.0.1
+flask-apscheduler==1.13.1
+flask-limiter==3.12
+
+# Environment
+python-dotenv==1.1.0
+gunicorn==23.0.0
+
+# HTTP / Data
+requests==2.32.3
+pandas>=2.2.0
+numpy>=2.0.0
+
+# Machine Learning
+scikit-learn==1.6.1
+xgboost==2.1.4
+joblib==1.4.2
+
+# Deep Learning (optional, reserved for future LSTM risk model)
+# tensorflow==2.19.0
+# keras==3.9.2
+
+# Firebase Admin SDK
+firebase-admin==6.7.0
+
+
+# Blockchain Integration
+web3==7.9.0
+eth-account==0.13.5
+
+# Testing
+pytest==8.3.5
+pytest-cov==6.1.1

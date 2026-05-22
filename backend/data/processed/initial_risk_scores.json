@@ -1,0 +1,222 @@
+[
+  {
+    "district": "Nagpur",
+    "districtId": "nagpur",
+    "lat": 21.1458,
+    "lon": 79.0882,
+    "riskScore": 69,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "21%",
+      "flood_impact": "5%",
+      "satellite_impact": "23%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.27,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.447,
+      "consecutive_dry_days": "9"
+    },
+    "computedAt": "2026-05-22T20:40:42.577778+00:00"
+  },
+  {
+    "district": "Amravati",
+    "districtId": "amravati",
+    "lat": 20.932,
+    "lon": 77.7523,
+    "riskScore": 66,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "18%",
+      "flood_impact": "7%",
+      "satellite_impact": "21%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.06,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.43,
+      "consecutive_dry_days": "24"
+    },
+    "computedAt": "2026-05-22T20:40:45.511285+00:00"
+  },
+  {
+    "district": "Wardha",
+    "districtId": "wardha",
+    "lat": 20.7453,
+    "lon": 78.6022,
+    "riskScore": 59,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "15%",
+      "flood_impact": "5%",
+      "satellite_impact": "20%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.22,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.499,
+      "consecutive_dry_days": "8"
+    },
+    "computedAt": "2026-05-22T20:40:48.380810+00:00"
+  },
+  {
+    "district": "Yavatmal",
+    "districtId": "yavatmal",
+    "lat": 20.3888,
+    "lon": 78.1204,
+    "riskScore": 72,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "27%",
+      "flood_impact": "3%",
+      "satellite_impact": "21%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.1,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.456,
+      "consecutive_dry_days": "8"
+    },
+    "computedAt": "2026-05-22T20:40:51.245735+00:00"
+  },
+  {
+    "district": "Akola",
+    "districtId": "akola",
+    "lat": 20.7002,
+    "lon": 77.0082,
+    "riskScore": 65,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "12%",
+      "flood_impact": "8%",
+      "satellite_impact": "25%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.03,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.363,
+      "consecutive_dry_days": "24"
+    },
+    "computedAt": "2026-05-22T20:40:54.109960+00:00"
+  },
+  {
+    "district": "Buldhana",
+    "districtId": "buldhana",
+    "lat": 20.5293,
+    "lon": 76.1842,
+    "riskScore": 64,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "9%",
+      "flood_impact": "10%",
+      "satellite_impact": "25%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.03,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.257,
+      "consecutive_dry_days": "24"
+    },
+    "computedAt": "2026-05-22T20:40:56.672864+00:00"
+  },
+  {
+    "district": "Washim",
+    "districtId": "washim",
+    "lat": 20.1041,
+    "lon": 77.134,
+    "riskScore": 63,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "13%",
+      "flood_impact": "6%",
+      "satellite_impact": "24%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.08,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.442,
+      "consecutive_dry_days": "24"
+    },
+    "computedAt": "2026-05-22T20:40:59.132204+00:00"
+  },
+  {
+    "district": "Chandrapur",
+    "districtId": "chandrapur",
+    "lat": 19.95,
+    "lon": 79.2961,
+    "riskScore": 63,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "7%",
+      "flood_impact": "12%",
+      "satellite_impact": "24%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.56,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.396,
+      "consecutive_dry_days": "8"
+    },
+    "computedAt": "2026-05-22T20:41:02.202159+00:00"
+  },
+  {
+    "district": "Gadchiroli",
+    "districtId": "gadchiroli",
+    "lat": 20.1826,
+    "lon": 80.0096,
+    "riskScore": 66,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "6%",
+      "flood_impact": "15%",
+      "satellite_impact": "25%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.73,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.26,
+      "consecutive_dry_days": "0"
+    },
+    "computedAt": "2026-05-22T20:41:05.072526+00:00"
+  },
+  {
+    "district": "Nanded",
+    "districtId": "nanded",
+    "lat": 19.1383,
+    "lon": 77.321,
+    "riskScore": 66,
+    "riskLevel": "High",
+    "riskMultiplier": 1.8,
+    "transparency": {
+      "drought_impact": "17%",
+      "flood_impact": "7%",
+      "satellite_impact": "21%",
+      "weather_impact": "20%"
+    },
+    "details": {
+      "rainfall_30d_avg": 0.27,
+      "soil_moisture_index": 0.25,
+      "ndvi_health": 0.425,
+      "consecutive_dry_days": "2"
+    },
+    "computedAt": "2026-05-22T20:41:08.007668+00:00"
+  }
+]

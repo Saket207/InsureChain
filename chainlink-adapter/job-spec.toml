@@ -1,0 +1,34 @@
+type = "directrequest"
+schemaVersion = 1
+name = "InsureChain Trigger Check"
+contractAddress = "YOUR_TRIGGER_ORACLE_CONTRACT_ADDRESS"
+maxTaskDuration = "0s"
+
+observationSource = """
+    decode_log   [type="ethabidecodelog"
+                  abi="TriggerRequested(bytes32 indexed requestId, string policyId, string district, int256 lat, int256 lon, string triggerType)"
+                  data="$(jobRun.logData)"
+                  topics="$(jobRun.logTopics)"]
+
+    decode_cbor  [type="cborparse" data="$(decode_log.data)"]
+
+    call_adapter [type="bridge"
+                  name="insurechain-trigger-adapter"
+                  requestData="{\\"id\\": \\"$(jobSpec.externalJobID)\\", \\"data\\": { \\"policyId\\": $(decode_log.policyId), \\"district\\": $(decode_log.district), \\"lat\\": $(decode_log.lat), \\"lon\\": $(decode_log.lon), \\"triggerType\\": $(decode_log.triggerType) }}"]
+
+    parse_fired        [type="jsonparse" path="data,fired"           data="$(call_adapter)"]
+    parse_confidence   [type="jsonparse" path="data,confidenceScore" data="$(call_adapter)"]
+    parse_policyId     [type="jsonparse" path="data,policyId"        data="$(call_adapter)"]
+
+    encode_data  [type="ethabiencode"
+                  abi="(bytes32 requestId, string policyId, uint256 fired, uint256 confidenceScore)"
+                  data="{\\"requestId\\": $(decode_log.requestId), \\"policyId\\": $(parse_policyId), \\"fired\\": $(parse_fired), \\"confidenceScore\\": $(parse_confidence)}"]
+
+    encode_tx    [type="ethabiencode"
+                  abi="fulfillTriggerRequest(bytes32 requestId, bytes data)"
+                  data="{\\"requestId\\": $(decode_log.requestId), \\"data\\": $(encode_data)}"]
+
+    submit_tx    [type="ethtx" to="YOUR_TRIGGER_ORACLE_CONTRACT_ADDRESS" data="$(encode_tx)"]
+
+    decode_log -> decode_cbor -> call_adapter -> parse_fired -> parse_confidence -> parse_policyId -> encode_data -> encode_tx -> submit_tx
+"""

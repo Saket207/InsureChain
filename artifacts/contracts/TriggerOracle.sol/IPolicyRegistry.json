@@ -1,0 +1,95 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IPolicyRegistry",
+  "sourceName": "contracts/TriggerOracle.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "policyId",
+          "type": "string"
+        }
+      ],
+      "name": "getPolicy",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "policyId",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "farmerWallet",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "district",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "season",
+              "type": "string"
+            },
+            {
+              "internalType": "string[]",
+              "name": "triggersSelected",
+              "type": "string[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "coverageAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "premiumAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPolicyRegistry.Policy",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "policyId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "newStatus",
+          "type": "string"
+        }
+      ],
+      "name": "updatePolicyStatus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
