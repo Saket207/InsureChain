@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import StoryMode from '../components/StoryMode';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -110,9 +111,8 @@ export default function Landing() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Actually Pays.</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-300 max-w-2xl leading-relaxed mb-10 mx-auto lg:mx-0 font-medium">
-                No more waiting months for claim approvals. No more rejection letters. InsureChain monitors satellite
-                and weather data in real-time — when conditions trigger, your payout arrives automatically via
-                smart contracts. <span className="text-white font-bold">Zero paperwork. Zero middlemen.</span>
+                Parametric crop insurance powered by <span className="text-white font-bold">satellite intelligence</span> and <span className="text-white font-bold">smart contracts</span>. 
+                InsureChain eliminates paperwork, bureaucracy, and delays. When extreme weather hits, payouts are triggered instantly and automatically to your wallet. Absolute security for the modern farmer.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -133,53 +133,115 @@ export default function Landing() {
               </div>
             </motion.div>
 
-            {/* Visual / Illustration */}
+            {/* Visual / Illustration with HD Image and Enhanced Crop Animations */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3, type: "spring" }}
-              className="flex-1 hidden lg:flex items-center justify-center"
+              className="flex-1 hidden lg:flex items-center justify-center relative w-full max-w-[600px] mx-auto"
             >
-              <div className="relative w-[450px] h-[450px]">
-                {/* Orbiting rings */}
-                <div className="absolute inset-0 rounded-full border-2 border-slate-700/50" />
-                <div className="absolute inset-10 rounded-full border border-emerald-500/20" />
-                <div className="absolute inset-24 rounded-full border-2 border-slate-700/30" />
+              {/* Enhanced Floating Leaves & Glowing Orbs Background */}
+              <div className="absolute inset-[-100px] z-0 pointer-events-none">
+                {/* Floating Leaves */}
+                {[...Array(12)].map((_, i) => {
+                  const size = Math.random() > 0.5 ? 'w-8 h-8' : 'w-5 h-5';
+                  const isTeal = Math.random() > 0.5;
+                  return (
+                    <motion.div
+                      key={`leaf-${i}`}
+                      className="absolute"
+                      initial={{ 
+                        x: Math.random() * 600 - 100, 
+                        y: Math.random() * 600 - 100,
+                        rotate: Math.random() * 360,
+                        opacity: 0,
+                        scale: Math.random() * 0.5 + 0.5
+                      }}
+                      animate={{ 
+                        x: [null, Math.random() * 600 - 100],
+                        y: [null, Math.random() * -200 - 100],
+                        rotate: Math.random() * 360 + 180,
+                        opacity: [0, Math.random() * 0.8 + 0.2, 0],
+                        scale: [null, Math.random() * 1 + 0.5]
+                      }}
+                      transition={{ 
+                        duration: Math.random() * 8 + 7,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: Math.random() * 5
+                      }}
+                    >
+                      <Leaf className={`${size} ${isTeal ? 'text-teal-400' : 'text-emerald-500'} drop-shadow-[0_0_15px_rgba(16,185,129,0.5)] blur-[1px]`} />
+                    </motion.div>
+                  )
+                })}
+                
+                {/* Glowing Tech Orbs */}
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={`orb-${i}`}
+                    className="absolute rounded-full blur-[8px]"
+                    initial={{ 
+                      x: Math.random() * 600 - 100, 
+                      y: Math.random() * 600 - 100,
+                      opacity: 0
+                    }}
+                    animate={{ 
+                      y: [null, Math.random() * -150 - 50],
+                      opacity: [0, 0.5, 0],
+                      scale: [0.5, 1.5, 0.5]
+                    }}
+                    transition={{ 
+                      duration: Math.random() * 5 + 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: Math.random() * 4
+                    }}
+                    style={{
+                      width: Math.random() * 20 + 10 + 'px',
+                      height: Math.random() * 20 + 10 + 'px',
+                      backgroundColor: Math.random() > 0.5 ? '#10b981' : '#2dd4bf', // emerald or teal
+                    }}
+                  />
+                ))}
+              </div>
 
-                {/* Center orb */}
-                <div className="absolute inset-32 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-xl flex items-center justify-center border border-white/10 shadow-2xl">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.4)]">
-                    <Leaf className="w-10 h-10 text-white" />
+              {/* Main Image Frame */}
+              <div className="relative w-full aspect-square max-w-[500px] rounded-[3rem] overflow-hidden shadow-[0_0_50px_rgba(16,185,129,0.15)] border border-slate-700/50 group z-10">
+                <img 
+                  src="/hero-bg-v2.png" 
+                  alt="Futuristic Aesthetic Crop Seedling" 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                
+                {/* Image Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent pointer-events-none" />
+
+                {/* Floating UI Elements over Image */}
+                <motion.div
+                  animate={{ y: [-8, 8, -8] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute top-8 right-8 bg-slate-900/80 backdrop-blur-md rounded-2xl p-4 border border-slate-700 shadow-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 pulse-emerald" />
+                    <div>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Live NDVI</p>
+                      <p className="text-xl font-black text-white leading-none">0.82 <span className="text-emerald-500 text-sm">Optimal</span></p>
+                    </div>
                   </div>
-                </div>
-
-                {/* Orbiting dots */}
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} className="absolute inset-0">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.8)] -mt-2" />
-                </motion.div>
-                <motion.div animate={{ rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: 'linear' }} className="absolute inset-10">
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,0.8)] mb-[-6px]" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} className="absolute inset-24">
-                  <div className="absolute top-1/2 right-0 -translate-y-1/2 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)] -mr-1" />
                 </motion.div>
 
-                {/* Floating cards */}
                 <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute top-12 -right-8 bg-slate-800/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-600 shadow-2xl"
+                  animate={{ y: [8, -8, 8] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                  className="absolute bottom-8 left-8 bg-emerald-600/90 backdrop-blur-md rounded-2xl p-4 border border-emerald-500 shadow-xl"
                 >
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">NDVI Index</p>
-                  <p className="text-2xl font-black text-emerald-400">0.82</p>
-                </motion.div>
-                <motion.div
-                  animate={{ y: [10, -10, 10] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                  className="absolute bottom-20 -left-12 bg-slate-800/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-600 shadow-2xl"
-                >
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Payout Speed</p>
-                  <p className="text-2xl font-black text-white">~3 min</p>
+                  <p className="text-[10px] font-bold text-emerald-100 uppercase tracking-widest leading-none mb-1">Blockchain Link</p>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-white" />
+                    <p className="text-xl font-black text-white leading-none">Connected</p>
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -329,30 +391,48 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ SUPPORTED DISTRICTS ═══ */}
-      <section className="py-24 sm:py-32 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900" />
-        
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <p className="text-sm font-black text-emerald-400 uppercase tracking-widest mb-10">
-              Currently Onboarded Districts — Maharashtra Pilot
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              {districts.map((d, i) => (
-                <motion.span
-                  key={d}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, type: "spring" }}
-                  whileHover={{ scale: 1.1, backgroundColor: "#10b981", color: "#fff", borderColor: "#10b981" }}
-                  className="px-6 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-base font-bold text-slate-300 backdrop-blur-sm transition-colors cursor-default"
-                >
-                  {d}
-                </motion.span>
-              ))}
+      {/* ═══ ABOUT THE DEVELOPER ═══ */}
+      <section className="relative py-32 overflow-hidden flex items-center justify-center min-h-[600px]">
+        {/* Large Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/developer-bg.png" 
+            alt="Indian Farmer Silhouette" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <p className="text-sm font-black text-emerald-400 uppercase tracking-widest mb-4">About the Project</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-8 font-[family-name:var(--font-heading)] tracking-tight">
+              Built with ❤️ by <span className="text-emerald-400">Saket Kumar</span>
+            </h2>
+            
+            <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-[2rem] shadow-2xl">
+              <p className="text-xl text-emerald-50 mb-6 font-medium leading-relaxed">
+                Developer at <span className="font-bold text-white">Dayananda Sagar College of Engineering</span>. 
+                Passionate about using Web3, Machine Learning, and Satellite tech to solve real-world problems for farmers.
+              </p>
+              
+              <div className="w-16 h-px bg-white/20 mx-auto mb-6" />
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm font-bold text-slate-300">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <Users className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  Saket Kumar
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <a href="mailto:saketk207@gmail.com" className="hover:text-white transition-colors">saketk207@gmail.com</a>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -409,19 +489,13 @@ export default function Landing() {
             </div>
 
             <div>
-              <h4 className="text-xs font-black mb-6 text-slate-300 uppercase tracking-widest">Built On</h4>
+              <h4 className="text-xs font-black mb-6 text-slate-300 uppercase tracking-widest">Contact</h4>
               <ul className="space-y-4 text-sm font-bold">
-                <li className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-slate-400" /> Ethereum Sepolia
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" /> Chainlink Oracles
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-500" /> NASA POWER API
-                </li>
+                <li className="text-slate-400">Saket Kumar</li>
+                <li><a href="mailto:saketk207@gmail.com" className="hover:text-emerald-400 transition-colors text-slate-400">saketk207@gmail.com</a></li>
               </ul>
             </div>
+
           </div>
 
           <div className="mt-16 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-4 font-medium">
@@ -436,6 +510,9 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* ── Story Mode (Isolated Component) ── */}
+      <StoryMode />
     </div>
   );
 }

@@ -102,5 +102,12 @@ export const backendApi = {
       headers: getHeaders(),
     });
     return resp.json();
+  },
+
+  getNationalAlerts: async () => {
+    const resp = await fetch(`${API_BASE_URL}/national-alerts`, {
+      headers: getHeaders(),
+    });
+    return resp.json();
   }
 };

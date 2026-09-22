@@ -4,219 +4,219 @@
     "districtId": "nagpur",
     "lat": 21.1458,
     "lon": 79.0882,
-    "riskScore": 69,
+    "riskScore": 54,
     "riskLevel": "High",
     "riskMultiplier": 1.8,
     "transparency": {
       "drought_impact": "21%",
       "flood_impact": "5%",
-      "satellite_impact": "23%",
-      "weather_impact": "20%"
+      "satellite_impact": "13%",
+      "weather_impact": "15%"
     },
     "details": {
-      "rainfall_30d_avg": 0.27,
+      "rainfall_30d_avg": 11.62,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.447,
-      "consecutive_dry_days": "9"
+      "ndvi_health": 0.706,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:42.577778+00:00"
+    "computedAt": "2026-09-22T04:46:59.290095+00:00"
   },
   {
     "district": "Amravati",
     "districtId": "amravati",
     "lat": 20.932,
     "lon": 77.7523,
-    "riskScore": 66,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 47,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "18%",
       "flood_impact": "7%",
-      "satellite_impact": "21%",
-      "weather_impact": "20%"
+      "satellite_impact": "15%",
+      "weather_impact": "7%"
     },
     "details": {
-      "rainfall_30d_avg": 0.06,
+      "rainfall_30d_avg": 6.74,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.43,
-      "consecutive_dry_days": "24"
+      "ndvi_health": 0.644,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:45.511285+00:00"
+    "computedAt": "2026-09-22T04:47:06.106357+00:00"
   },
   {
     "district": "Wardha",
     "districtId": "wardha",
     "lat": 20.7453,
     "lon": 78.6022,
-    "riskScore": 59,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 37,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "15%",
       "flood_impact": "5%",
-      "satellite_impact": "20%",
-      "weather_impact": "20%"
+      "satellite_impact": "5%",
+      "weather_impact": "12%"
     },
     "details": {
-      "rainfall_30d_avg": 0.22,
+      "rainfall_30d_avg": 8.32,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.499,
-      "consecutive_dry_days": "8"
+      "ndvi_health": 0.879,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:48.380810+00:00"
+    "computedAt": "2026-09-22T04:47:13.579531+00:00"
   },
   {
     "district": "Yavatmal",
     "districtId": "yavatmal",
     "lat": 20.3888,
     "lon": 78.1204,
-    "riskScore": 72,
+    "riskScore": 57,
     "riskLevel": "High",
     "riskMultiplier": 1.8,
     "transparency": {
       "drought_impact": "27%",
       "flood_impact": "3%",
-      "satellite_impact": "21%",
-      "weather_impact": "20%"
+      "satellite_impact": "14%",
+      "weather_impact": "12%"
     },
     "details": {
-      "rainfall_30d_avg": 0.1,
+      "rainfall_30d_avg": 7.46,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.456,
-      "consecutive_dry_days": "8"
+      "ndvi_health": 0.646,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:51.245735+00:00"
+    "computedAt": "2026-09-22T04:47:18.268237+00:00"
   },
   {
     "district": "Akola",
     "districtId": "akola",
     "lat": 20.7002,
     "lon": 77.0082,
-    "riskScore": 65,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 32,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "12%",
       "flood_impact": "8%",
-      "satellite_impact": "25%",
-      "weather_impact": "20%"
+      "satellite_impact": "7%",
+      "weather_impact": "5%"
     },
     "details": {
-      "rainfall_30d_avg": 0.03,
+      "rainfall_30d_avg": 5.08,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.363,
-      "consecutive_dry_days": "24"
+      "ndvi_health": 0.781,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:54.109960+00:00"
+    "computedAt": "2026-09-22T04:47:23.647596+00:00"
   },
   {
     "district": "Buldhana",
     "districtId": "buldhana",
     "lat": 20.5293,
     "lon": 76.1842,
-    "riskScore": 64,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 44,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "9%",
       "flood_impact": "10%",
-      "satellite_impact": "25%",
-      "weather_impact": "20%"
+      "satellite_impact": "20%",
+      "weather_impact": "4%"
     },
     "details": {
-      "rainfall_30d_avg": 0.03,
+      "rainfall_30d_avg": 5.39,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.257,
-      "consecutive_dry_days": "24"
+      "ndvi_health": 0.533,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:56.672864+00:00"
+    "computedAt": "2026-09-22T04:47:35.018896+00:00"
   },
   {
     "district": "Washim",
     "districtId": "washim",
     "lat": 20.1041,
     "lon": 77.134,
-    "riskScore": 63,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 38,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "13%",
       "flood_impact": "6%",
-      "satellite_impact": "24%",
-      "weather_impact": "20%"
+      "satellite_impact": "14%",
+      "weather_impact": "5%"
     },
     "details": {
-      "rainfall_30d_avg": 0.08,
+      "rainfall_30d_avg": 4.96,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.442,
-      "consecutive_dry_days": "24"
+      "ndvi_health": 0.558,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:40:59.132204+00:00"
+    "computedAt": "2026-09-22T04:47:43.138863+00:00"
   },
   {
     "district": "Chandrapur",
     "districtId": "chandrapur",
     "lat": 19.95,
     "lon": 79.2961,
-    "riskScore": 63,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 34,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "7%",
       "flood_impact": "12%",
-      "satellite_impact": "24%",
-      "weather_impact": "20%"
+      "satellite_impact": "10%",
+      "weather_impact": "5%"
     },
     "details": {
-      "rainfall_30d_avg": 0.56,
+      "rainfall_30d_avg": 7.34,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.396,
-      "consecutive_dry_days": "8"
+      "ndvi_health": 0.791,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:41:02.202159+00:00"
+    "computedAt": "2026-09-22T04:47:53.707980+00:00"
   },
   {
     "district": "Gadchiroli",
     "districtId": "gadchiroli",
     "lat": 20.1826,
     "lon": 80.0096,
-    "riskScore": 66,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 33,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "6%",
       "flood_impact": "15%",
-      "satellite_impact": "25%",
-      "weather_impact": "20%"
+      "satellite_impact": "6%",
+      "weather_impact": "7%"
     },
     "details": {
-      "rainfall_30d_avg": 0.73,
+      "rainfall_30d_avg": 9.71,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.26,
+      "ndvi_health": 0.831,
       "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:41:05.072526+00:00"
+    "computedAt": "2026-09-22T04:47:58.916134+00:00"
   },
   {
     "district": "Nanded",
     "districtId": "nanded",
     "lat": 19.1383,
     "lon": 77.321,
-    "riskScore": 66,
-    "riskLevel": "High",
-    "riskMultiplier": 1.8,
+    "riskScore": 47,
+    "riskLevel": "Moderate",
+    "riskMultiplier": 1.4,
     "transparency": {
       "drought_impact": "17%",
       "flood_impact": "7%",
-      "satellite_impact": "21%",
-      "weather_impact": "20%"
+      "satellite_impact": "18%",
+      "weather_impact": "5%"
     },
     "details": {
-      "rainfall_30d_avg": 0.27,
+      "rainfall_30d_avg": 5.21,
       "soil_moisture_index": 0.25,
-      "ndvi_health": 0.425,
-      "consecutive_dry_days": "2"
+      "ndvi_health": 0.535,
+      "consecutive_dry_days": "0"
     },
-    "computedAt": "2026-05-22T20:41:08.007668+00:00"
+    "computedAt": "2026-09-22T04:48:16.756685+00:00"
   }
 ]

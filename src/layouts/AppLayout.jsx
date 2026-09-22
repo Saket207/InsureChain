@@ -68,7 +68,7 @@ export default function AppLayout() {
     const fetchFarmers = async () => {
       try {
         const fetchedFarmers = await listAllFarmers();
-        setFarmers([{ id: 'admin', name: 'Government Admin', district: 'All Districts' }, ...fetchedFarmers]);
+        setFarmers(fetchedFarmers);
       } catch (error) {
         console.error("Error fetching farmers:", error);
       }
@@ -94,19 +94,30 @@ export default function AppLayout() {
 
   const pageTitle = pageTitles[location.pathname] || 'InsureChain';
   
-  const userName = farmerProfile?.name || 'Farmer';
+  const userName = farmerProfile?.name || farmerProfile?.fullName || (farmerProfile?.email ? farmerProfile.email.split('@')[0].charAt(0).toUpperCase() + farmerProfile.email.split('@')[0].slice(1) : 'Farmer');
   const userInitials = userName.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase();
 
   return (
     <div className="flex h-screen bg-bg-app overflow-hidden">
       {/* ═══ Desktop Sidebar ═══ */}
       <aside
-        className={`hidden lg:flex flex-col bg-sidebar text-white transition-all duration-500 ease-in-out relative z-50
+        className={`hidden lg:flex flex-col text-white transition-all duration-500 ease-in-out relative z-50 overflow-hidden
           ${sidebarCollapsed ? 'w-24' : 'w-72'}`}
+        style={{
+          background: 'linear-gradient(180deg, #0f172a 0%, #0c1220 50%, #0a0f1a 100%)',
+        }}
       >
+        {/* Subtle animated background pattern */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundSize: '24px 24px',
+            backgroundImage: 'radial-gradient(circle, #10b981 1px, transparent 1px)',
+          }}
+        />
+
         {/* Logo Section */}
-        <div className={`flex items-center gap-4 px-8 py-10 ${sidebarCollapsed ? 'justify-center px-4' : ''}`}>
-          <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-emerald-500/20">
+        <div className={`relative z-10 flex items-center gap-4 px-8 py-10 ${sidebarCollapsed ? 'justify-center px-4' : ''}`}>
+          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center sidebar-logo-glow">
             <Leaf className="w-6 h-6 text-white" />
           </div>
           {!sidebarCollapsed && (
@@ -117,44 +128,73 @@ export default function AppLayout() {
           )}
         </div>
 
+        {/* Shimmer Divider */}
+        <div className="px-6 relative z-10">
+          <div className="sidebar-divider" />
+        </div>
+
+        {/* Nav Section Label */}
+        {!sidebarCollapsed && (
+          <div className="px-8 pt-6 pb-2 relative z-10">
+            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Main Menu</p>
+          </div>
+        )}
+
         {/* Nav Links */}
-        <nav className="flex-1 px-4 space-y-2 mt-4 overflow-y-auto custom-scrollbar">
-          {navItems.filter(item => item.to !== '/admin' || farmerProfile?.role === 'admin').map((item) => (
-            <NavLink
+        <nav className="flex-1 px-4 space-y-1.5 mt-2 overflow-y-auto custom-scrollbar relative z-10">
+          {navItems.filter(item => item.to !== '/admin' || farmerProfile?.role === 'admin').map((item, index) => (
+            <motion.div
               key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                `sidebar-link ${isActive ? 'sidebar-link-active' : 'sidebar-link-inactive'} 
-                ${sidebarCollapsed ? 'justify-center px-0' : ''}`
-              }
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
             >
-              <item.icon className="w-5 h-5 flex-shrink-0" />
-              {!sidebarCollapsed && (
-                <span className="tracking-tight">{item.label}</span>
-              )}
-              {item.label === 'Alerts' && unreadCount > 0 && (
-                <span className={`ml-auto bg-danger text-white text-[10px] font-bold rounded-full flex items-center justify-center
-                  ${sidebarCollapsed ? 'absolute top-2 right-2 w-4 h-4' : 'w-5 h-5'}`}>
-                  {unreadCount}
-                </span>
-              )}
-            </NavLink>
+              <NavLink
+                to={item.to}
+                id={item.to === '/register-policy' ? 'walkthrough-register-link' : undefined}
+                className={({ isActive }) =>
+                  `sidebar-link ${isActive ? 'sidebar-link-active' : 'sidebar-link-inactive'} 
+                  ${sidebarCollapsed ? 'justify-center px-0' : ''}`
+                }
+              >
+                <item.icon className="w-5 h-5 flex-shrink-0" />
+                {!sidebarCollapsed && (
+                  <span className="tracking-tight">{item.label}</span>
+                )}
+                {item.label === 'Alerts' && unreadCount > 0 && (
+                  <span className={`ml-auto bg-danger text-white text-[10px] font-bold rounded-full flex items-center justify-center
+                    ${sidebarCollapsed ? 'absolute top-2 right-2 w-4 h-4' : 'w-5 h-5'}`}>
+                    {unreadCount}
+                  </span>
+                )}
+              </NavLink>
+            </motion.div>
           ))}
         </nav>
 
+        {/* Shimmer Divider */}
+        <div className="px-6 relative z-10">
+          <div className="sidebar-divider" />
+        </div>
+
         {/* Footer Info */}
-        <div className={`p-6 mt-auto border-t border-white/5 ${sidebarCollapsed ? 'px-4' : ''}`}>
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+        <div className={`p-6 mt-auto relative z-10 ${sidebarCollapsed ? 'px-4' : ''}`}>
+          <div className="rounded-2xl p-4 border border-white/10 transition-all duration-300 hover:border-emerald-500/30"
+            style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.08), rgba(255,255,255,0.03))' }}
+          >
             {isConnected ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-white">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-xs font-bold text-white shadow-md shadow-emerald-500/20">
                     {userInitials}
                   </div>
                   {!sidebarCollapsed && (
                     <div className="flex flex-col overflow-hidden">
                       <span className="text-xs font-bold text-white truncate">{userName}</span>
-                      <span className="text-[10px] text-slate-400 font-mono">{truncateAddress(address)}</span>
+                      <span className="text-[10px] text-emerald-400/80 font-mono flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-emerald inline-block" />
+                        {truncateAddress(address)}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -180,36 +220,40 @@ export default function AppLayout() {
               <Menu className="w-5 h-5 text-slate-600" />
             </button>
             <div className="flex flex-col">
-              <h1 className="text-xl font-extrabold font-heading tracking-tight text-slate-900">{pageTitle}</h1>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">{isConnected ? `Network: ${networkName}` : 'Wallet Disconnected'}</p>
+              <h1 className="text-xl font-extrabold font-heading tracking-tight text-slate-900 leading-none">{pageTitle}</h1>
+              <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest mt-1.5">{isConnected ? `Network: ${networkName}` : 'WALLET DISCONNECTED'}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-slate-50 p-1.5 rounded-2xl border border-slate-200">
-              <NavLink to="/alerts" className="p-2.5 rounded-xl hover:bg-white hover:shadow-sm transition-all relative group">
-                <Bell className="w-5 h-5 text-slate-500 group-hover:text-primary transition-colors" />
-                {unreadCount > 0 && <span className="absolute top-2 right-2 w-2 h-2 bg-danger rounded-full border-2 border-white" />}
+            <div className="hidden sm:flex items-center bg-[#fcf8f2] p-1 rounded-2xl border border-[#eadaa6]/60 shadow-sm">
+              <NavLink to="/alerts" className="p-2 rounded-xl hover:bg-white hover:shadow-sm transition-all relative group flex items-center justify-center">
+                <Bell className="w-4 h-4 text-[#8c7438] group-hover:text-amber-600 transition-colors" />
+                {unreadCount > 0 && <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-amber-600 rounded-full animate-pulse" />}
               </NavLink>
-              <NavLink to="/settings" className="p-2.5 rounded-xl hover:bg-white hover:shadow-sm transition-all group">
-                <Settings className="w-5 h-5 text-slate-500 group-hover:text-primary transition-colors" />
+              <NavLink to="/settings" className="p-2 rounded-xl hover:bg-white hover:shadow-sm transition-all group flex items-center justify-center">
+                <Settings className="w-4 h-4 text-[#8c7438] group-hover:text-amber-600 transition-colors" />
               </NavLink>
             </div>
             
-            <div className="h-10 w-px bg-slate-200 mx-2 hidden sm:block" />
+            <div className="h-10 w-px bg-slate-200 mx-1.5 hidden sm:block" />
             
             <div className="flex items-center gap-3 pl-2 relative" ref={dropdownRef}>
               <div 
-                className="flex items-center gap-3 cursor-pointer group"
+                className="flex items-center gap-3.5 cursor-pointer group"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <div className="hidden md:flex flex-col items-end text-slate-900">
-                  <span className="text-xs font-bold group-hover:text-primary transition-colors">{userName}</span>
-                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest flex items-center gap-1">
-                    {farmerProfile?.role === 'admin' ? 'Government Admin' : 'Verified Farmer'} <ChevronDown className={`w-3 h-3 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                <div className="hidden md:flex flex-col items-end text-right">
+                  <span className="text-sm font-black text-slate-900 leading-none group-hover:text-amber-600 transition-colors">{userName}</span>
+                  <span className="text-[9px] font-black text-emerald-600 uppercase tracking-widest mt-1 flex items-center gap-1.5">
+                    {farmerProfile?.role === 'admin' ? 'VERIFIED ADMIN' : 'VERIFIED SENIOR FARMER'}
+                    <svg className="w-3 h-3 text-[#c2ad6f]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" strokeLinecap="round" />
+                    </svg>
                   </span>
+                  <span className="text-[8px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Agriculture Technology Platform</span>
                 </div>
-                <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-emerald-500/20 border-2 border-white group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 border border-emerald-500/30 flex items-center justify-center text-sm font-black text-white shadow-md shadow-emerald-600/10 group-hover:scale-105 transition-all">
                   {userInitials}
                 </div>
               </div>
@@ -225,9 +269,9 @@ export default function AppLayout() {
                     className="absolute top-[120%] right-0 w-64 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden z-50 flex flex-col"
                   >
                     <div className="p-4 bg-slate-50 border-b border-slate-100">
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Fast Switch (Demo)</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Switch Account</p>
                       <div className="space-y-1 max-h-[200px] overflow-y-auto custom-scrollbar pr-1">
-                        {farmers.filter(f => f.email).map((farmer) => (
+                        {farmers.filter(f => f.id !== 'admin' && (f.email || f.name)).map((farmer) => (
                           <button
                             key={farmer.id}
                             onClick={() => {
@@ -253,6 +297,28 @@ export default function AppLayout() {
                             </div>
                           </button>
                         ))}
+                        {/* Admin Panel Access */}
+                        <button
+                          onClick={() => {
+                            if (mockLogin) {
+                              mockLogin('admin');
+                            }
+                            setDropdownOpen(false);
+                          }}
+                          className={`w-full flex items-center gap-3 p-2 rounded-xl text-left transition-colors mt-1 border-t border-slate-100 pt-2 ${
+                            farmerProfile?.role === 'admin'
+                              ? 'bg-amber-50 text-amber-700'
+                              : 'hover:bg-amber-50/50 text-slate-700'
+                          }`}
+                        >
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 bg-gradient-to-br from-amber-400 to-amber-600 text-white">
+                            <Shield className="w-4 h-4" />
+                          </div>
+                          <div className="flex flex-col overflow-hidden">
+                            <span className="text-sm font-bold truncate">Admin Panel</span>
+                            <span className="text-[10px] opacity-70 truncate uppercase">Government</span>
+                          </div>
+                        </button>
                       </div>
                     </div>
                     

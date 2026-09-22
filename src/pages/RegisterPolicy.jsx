@@ -37,6 +37,7 @@ import { registerPolicyOnChain } from '../services/contractService';
 import { BrowserProvider, parseEther } from 'ethers';
 
 import { backendApi } from '../services/backendApi';
+import { downloadPolicyCertificate } from '../utils/certificate';
 
 const steps = ['Risk Coverage', 'Authentication', 'Final Receipt'];
 
@@ -263,6 +264,14 @@ export default function RegisterPolicy() {
 
   return (
     <div className="max-w-4xl mx-auto pb-20">
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-emerald-600 transition-colors mb-8 group"
+      >
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Go Back
+      </button>
+
       <div className="mb-12 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 mb-4">
           <Shield className="w-4 h-4" />
@@ -502,12 +511,20 @@ export default function RegisterPolicy() {
               </div>
             </div>
 
-            <button
-              onClick={() => { resetRegistration(); navigate('/dashboard'); }}
-              className="w-full py-5 bg-emerald-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-emerald-700 hover:shadow-2xl hover:shadow-emerald-500/30 transition-all shadow-lg"
-            >
-              Access Command Center
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
+              <button
+                onClick={() => downloadPolicyCertificate(createdPolicy)}
+                className="flex-1 py-5 border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 rounded-2xl text-xs font-black uppercase tracking-widest transition-all"
+              >
+                Download Certificate
+              </button>
+              <button
+                onClick={() => { resetRegistration(); navigate('/dashboard'); }}
+                className="flex-1 py-5 bg-emerald-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-emerald-700 hover:shadow-2xl hover:shadow-emerald-500/30 transition-all shadow-lg"
+              >
+                Access Command Center
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

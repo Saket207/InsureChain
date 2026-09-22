@@ -31,6 +31,7 @@ export default function WalletButton({ compact = false }) {
   if (!isConnected) {
     return (
       <motion.button
+        id="walkthrough-wallet-btn"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={connect}
@@ -44,7 +45,7 @@ export default function WalletButton({ compact = false }) {
   }
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef} id="walkthrough-wallet-btn">
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

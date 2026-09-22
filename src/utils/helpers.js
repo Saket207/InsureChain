@@ -93,14 +93,14 @@ export function calculatePremium({ district, season, triggers }) {
  */
 export function getTriggerColor(trigger) {
   const colors = {
-    drought: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' },
-    flood: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', dot: 'bg-blue-500' },
-    heatwave: { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' },
-    frost: { bg: 'bg-sky-50', text: 'text-sky-700', border: 'border-sky-200', dot: 'bg-sky-500' },
-    pest: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', dot: 'bg-emerald-500' },
-    hail: { bg: 'bg-indigo-50', text: 'text-indigo-700', border: 'border-indigo-200', dot: 'bg-indigo-500' },
-    unseasonal_rain: { bg: 'bg-teal-50', text: 'text-teal-700', border: 'border-teal-200', dot: 'bg-teal-500' },
-    cyclone: { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-200', dot: 'bg-rose-500' },
+    drought: { bg: 'bg-amber-100/90', text: 'text-amber-900', border: 'border-amber-300', dot: 'bg-amber-600' },
+    flood: { bg: 'bg-blue-100/90', text: 'text-blue-900', border: 'border-blue-300', dot: 'bg-blue-600' },
+    heatwave: { bg: 'bg-red-100/90', text: 'text-red-900', border: 'border-red-300', dot: 'bg-red-600' },
+    frost: { bg: 'bg-sky-100/90', text: 'text-sky-900', border: 'border-sky-300', dot: 'bg-sky-600' },
+    pest: { bg: 'bg-emerald-100/90', text: 'text-emerald-900', border: 'border-emerald-300', dot: 'bg-emerald-600' },
+    hail: { bg: 'bg-indigo-100/90', text: 'text-indigo-900', border: 'border-indigo-300', dot: 'bg-indigo-600' },
+    unseasonal_rain: { bg: 'bg-teal-100/90', text: 'text-teal-900', border: 'border-teal-300', dot: 'bg-teal-600' },
+    cyclone: { bg: 'bg-rose-100/90', text: 'text-rose-900', border: 'border-rose-300', dot: 'bg-rose-600' },
   };
   return colors[trigger] || colors.drought;
 }
@@ -110,11 +110,11 @@ export function getTriggerColor(trigger) {
  */
 export function getStatusStyle(status) {
   const styles = {
-    Active: { bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-500' },
-    Triggered: { bg: 'bg-red-50', text: 'text-red-700', dot: 'bg-red-500' },
-    Expired: { bg: 'bg-slate-100', text: 'text-slate-600', dot: 'bg-slate-400' },
-    'Pending Payout': { bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-500' },
-    PaidOut: { bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-500' },
+    Active: { bg: 'bg-emerald-100/90', text: 'text-emerald-900', dot: 'bg-emerald-600' },
+    Triggered: { bg: 'bg-red-100/90', text: 'text-red-900', dot: 'bg-red-600' },
+    Expired: { bg: 'bg-slate-200/90', text: 'text-slate-900', dot: 'bg-slate-600' },
+    'Pending Payout': { bg: 'bg-amber-100/90', text: 'text-amber-900', dot: 'bg-amber-600' },
+    PaidOut: { bg: 'bg-emerald-200/95', text: 'text-emerald-950', dot: 'bg-emerald-700' },
   };
   return styles[status] || styles.Active;
 }
@@ -124,10 +124,10 @@ export function getStatusStyle(status) {
  */
 export function getRiskColor(level) {
   const colors = {
-    Low: { bg: 'bg-emerald-50', text: 'text-emerald-700', hex: '#047857' },
-    Moderate: { bg: 'bg-yellow-50', text: 'text-yellow-700', hex: '#B45309' },
-    High: { bg: 'bg-orange-50', text: 'text-orange-700', hex: '#C2410C' },
-    Critical: { bg: 'bg-red-50', text: 'text-red-700', hex: '#B91C1C' },
+    Low: { bg: 'bg-emerald-100/90', text: 'text-emerald-900', hex: '#047857' },
+    Moderate: { bg: 'bg-yellow-100/90', text: 'text-yellow-900', hex: '#B45309' },
+    High: { bg: 'bg-orange-100/90', text: 'text-orange-900', hex: '#C2410C' },
+    Critical: { bg: 'bg-red-100/90', text: 'text-red-900', hex: '#B91C1C' },
   };
   return colors[level] || colors.Low;
 }
@@ -147,10 +147,10 @@ export function getRiskLevel(score) {
  */
 export function getAlertTypeStyle(type) {
   const styles = {
-    early_warning: { bg: 'bg-amber-50', border: 'border-amber-200', icon: 'text-amber-600', label: 'Early Warning' },
-    trigger_fired: { bg: 'bg-red-50', border: 'border-red-200', icon: 'text-red-600', label: 'Trigger Fired' },
-    payout_confirmed: { bg: 'bg-emerald-50', border: 'border-emerald-200', icon: 'text-emerald-600', label: 'Payout Confirmed' },
-    policy_expiry: { bg: 'bg-slate-50', border: 'border-slate-200', icon: 'text-slate-600', label: 'Policy Expiry' },
+    early_warning: { bg: 'bg-amber-100/90', border: 'border-amber-300', icon: 'text-amber-800', label: 'Early Warning' },
+    trigger_fired: { bg: 'bg-red-100/90', border: 'border-red-300', icon: 'text-red-800', label: 'Trigger Fired' },
+    payout_confirmed: { bg: 'bg-emerald-100/90', border: 'border-emerald-300', icon: 'text-emerald-800', label: 'Payout Confirmed' },
+    policy_expiry: { bg: 'bg-slate-200/90', border: 'border-slate-300', icon: 'text-slate-800', label: 'Policy Expiry' },
   };
   return styles[type] || styles.early_warning;
 }

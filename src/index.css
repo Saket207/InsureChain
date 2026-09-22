@@ -49,15 +49,42 @@
   }
 
   .sidebar-link {
-    @apply flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-200;
+    @apply flex items-center gap-4 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 relative overflow-hidden;
+  }
+
+  .sidebar-link::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(45,212,191,0.08));
+  }
+
+  .sidebar-link:hover::before {
+    @apply opacity-100;
   }
 
   .sidebar-link-active {
-    @apply bg-primary text-white shadow-lg shadow-emerald-500/40;
+    @apply text-white shadow-lg shadow-emerald-500/30;
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+
+  .sidebar-link-active::before {
+    @apply opacity-0;
+  }
+
+  .sidebar-link-active::after {
+    content: '';
+    @apply absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-l-full;
+    background: rgba(255,255,255,0.6);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
   }
 
   .sidebar-link-inactive {
     @apply text-slate-400 hover:text-white hover:bg-white/5;
+  }
+
+  .sidebar-link-inactive:hover {
+    @apply text-emerald-300;
+    transform: translateX(4px);
   }
 
   .stat-icon-box {
@@ -83,6 +110,67 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
   }
 
+  /* Sidebar shimmer line */
+  @keyframes shimmer-line {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  .sidebar-divider {
+    @apply relative h-px w-full overflow-hidden;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.15), transparent);
+  }
+
+  .sidebar-divider::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.6), transparent);
+    animation: shimmer-line 3s infinite;
+    width: 50%;
+  }
+
+  /* Floating glow for sidebar logo */
+  @keyframes logo-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.2), 0 0 40px rgba(16,185,129,0.05); }
+    50% { box-shadow: 0 0 25px rgba(16,185,129,0.4), 0 0 50px rgba(16,185,129,0.1); }
+  }
+
+  .sidebar-logo-glow {
+    animation: logo-glow 4s ease-in-out infinite;
+  }
+
+  /* Glowing Shimmer Button Effect */
+  @keyframes shimmer-btn-sweep {
+    0% { transform: translateX(-150%); }
+    50% { transform: translateX(150%); }
+    100% { transform: translateX(150%); }
+  }
+
+  .shimmer-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-150%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.15) 70%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer-btn-sweep 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
   /* Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
@@ -90,4 +178,86 @@
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-slate-300 rounded-full;
   }
+
+  /* Smooth 300ms color fade animations for Leaflet SVG vector paths */
+  path.leaflet-interactive {
+    transition: fill 0.3s ease, fill-opacity 0.3s ease, stroke 0.3s ease;
+  }
+
+  /* ── Premium Dashboard Glassmorphic Utilities ── */
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 28px;
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.04),
+      0 1px 3px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    box-shadow:
+      0 20px 60px rgba(16, 185, 129, 0.08),
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border-color: rgba(16, 185, 129, 0.25);
+  }
+
+  .glass-card-dark {
+    background: #0f172a; /* Deeper, solid rich slate-900 */
+    border: 1px solid #1e293b; /* Crisp border to outline the card against light backgrounds */
+    border-radius: 28px;
+    box-shadow:
+      0 10px 30px rgba(15, 23, 42, 0.12),
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-dark:hover {
+    box-shadow:
+      0 20px 40px rgba(16, 185, 129, 0.1), /* Emerald neon shadow glow */
+      0 10px 30px rgba(15, 23, 42, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(16, 185, 129, 0.45); /* Glowing emerald highlight border on hover */
+    transform: translateY(-2px);
+  }
+
+  /* Ambient breathing glow blob */
+  @keyframes ambient-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    33% { transform: translate(15px, -20px) scale(1.1); opacity: 0.6; }
+    66% { transform: translate(-10px, 10px) scale(0.95); opacity: 0.35; }
+  }
+
+  .ambient-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    animation: ambient-drift 8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* 3D perspective container for tilt cards */
+  .perspective-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+  }
+
+  /* Number counter glow effect */
+  .stat-value-glow {
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+  }
 }
+

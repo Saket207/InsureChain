@@ -159,6 +159,20 @@ export const markAlertAsRead = async (alertId) => {
   });
 };
 
+export const getAlertsByPolicy = async (policyId) => {
+  try {
+    const q = query(
+      collection(db, 'alerts'),
+      where('policyId', '==', policyId)
+    );
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.error("Error fetching alerts for policy:", e);
+    return [];
+  }
+};
+
 // ── District Risk Scores ──
 
 export const getDistrictRiskScores = async () => {
@@ -206,17 +220,22 @@ export const seedDistrictRiskScores = async () => {
 export const listAllFarmers = async () => {
   try {
     const snap = await getDocs(collection(db, 'farmers'));
-    return snap.docs.map((d) => ({
-      uid: d.id,
-      id: d.id, // add id for AuthContext dropdown compatibility
-      name: d.data().fullName || d.data().name || 'Unknown Farmer',
-      fullName: d.data().fullName || d.data().name || 'Unknown Farmer',
-      email: d.data().email || '',
-      mobile: d.data().mobile || '',
-      district: d.data().district || d.data().districtId || '',
-      state: d.data().state || 'Maharashtra',
-      role: d.data().role || 'farmer',
-    }));
+    return snap.docs.map((d) => {
+      const email = d.data().email || '';
+      const emailName = email ? email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1) : 'Farmer';
+      const displayName = d.data().fullName || d.data().name || emailName;
+      return {
+        uid: d.id,
+        id: d.id, // add id for AuthContext dropdown compatibility
+        name: displayName,
+        fullName: displayName,
+        email,
+        mobile: d.data().mobile || '',
+        district: d.data().district || d.data().districtId || '',
+        state: d.data().state || 'Maharashtra',
+        role: d.data().role || 'farmer',
+      };
+    });
   } catch (e) {
     console.error('Error listing farmers:', e);
     return [];
