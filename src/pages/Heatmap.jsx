@@ -784,12 +784,12 @@ export default function Heatmap() {
             attribution={
               mapViewMode === 'satellite'
                 ? '&copy; <a href="https://www.esri.com">Esri</a> &copy; NASA/USGS'
-                : '&copy; <a href="https://carto.com/attributions">CartoDB</a>'
+                : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
             url={
               mapViewMode === 'satellite'
                 ? 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-                : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+                : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             }
             opacity={mapViewMode === 'satellite' ? 0.85 : 0.9}
           />
